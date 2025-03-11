@@ -22,9 +22,23 @@ public class MembreDAO {
             Membre membre = new Membre();
             membre.setId(rs.getInt("id"));
             membre.setNom(rs.getString("name"));
-            
+            membre.setDateDeNaissance(rs.getDate("dateDeNaissance"));
+            members.add(membre);
         }
-
         return members;
     }
+    public static void addMembre(Membre membre) throws SQLException {
+        String sql = "INSERT INTO membre(nom, dateDeNaissance) VALUES (?,?)";
+        Connection con = Connector.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, membre.getNom());
+        ps.setDate(2, membre.getDateDeNaissance());
+        ps.executeUpdate();
+    }
+
+    public static void getMembreById() throws SQLException {
+        String sql = "SELECT * FROM membre WHERE id=?";
+        Connection con = Connector.getConnection();
+    }
+
 }
