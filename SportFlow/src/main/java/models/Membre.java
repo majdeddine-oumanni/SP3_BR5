@@ -24,7 +24,7 @@ public class Membre {
         this.nom = nom;
     }
 
-    public Date getDateDeNaissance() {
+    public java.sql.Date getDateDeNaissance() {
         return dateDeNaissance;
     }
 
