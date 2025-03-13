@@ -11,34 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MembreDAO {
-
-    public static List<Membre> getMembers() throws SQLException {
-        String sql = "SELECT * FROM member";
+    public List<Membre> getAllMembre() throws SQLException {
+        List<Membre> membres = new ArrayList<>();
+        String sql = "SELECT * FROM membre";
         Connection con = Connector.getConnection();
         PreparedStatement ps = con.prepareStatement(sql);
-        List<Membre> members = new ArrayList<>();
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
             Membre membre = new Membre();
             membre.setId(rs.getInt("id"));
-            membre.setNom(rs.getString("name"));
             membre.setDateDeNaissance(rs.getDate("dateDeNaissance"));
-            members.add(membre);
+            membre.setNom(rs.getString("nom"));
         }
-        return members;
+        return membres;
     }
-    public static void addMembre(Membre membre) throws SQLException {
-        String sql = "INSERT INTO membre(nom, dateDeNaissance) VALUES (?,?)";
-        Connection con = Connector.getConnection();
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, membre.getNom());
-        ps.setDate(2, membre.getDateDeNaissance());
-        ps.executeUpdate();
-    }
-
-    public static void getMembreById() throws SQLException {
-        String sql = "SELECT * FROM membre WHERE id=?";
-        Connection con = Connector.getConnection();
-    }
-
 }

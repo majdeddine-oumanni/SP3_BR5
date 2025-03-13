@@ -1,9 +1,18 @@
 package models;
 
-public class utilisateur {
+public class Utilisateur {
+    private int id;
+    private String nom;
+    private Type type;
 
-    protected int id;
-    protected String nom;
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
 
     public int getId() {
         return id;
@@ -18,11 +27,6 @@ public class utilisateur {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public utilisateur(int id, String nom) {
-        this.id = id;
         this.nom = nom;
     }
 
