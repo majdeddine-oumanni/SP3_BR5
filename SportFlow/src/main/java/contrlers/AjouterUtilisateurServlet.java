@@ -22,7 +22,9 @@ public class AjouterUtilisateurServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nom = request.getParameter("nom");
         Type type = Type.valueOf(request.getParameter("type"));
-        Utilisateur utilisateur = new Utilisateur(nom);
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setType(type);
+        utilisateur.setNom(nom);
         try {
             UtilisateurDAO.ajouterUtilisateur(utilisateur);
         } catch (SQLException e) {
