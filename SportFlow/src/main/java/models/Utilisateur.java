@@ -3,17 +3,9 @@ package models;
 public class Utilisateur {
     private int id;
     private String nom;
-    private Type type;
+    Type type;
 
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -30,4 +22,11 @@ public class Utilisateur {
         this.nom = nom;
     }
 
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 }

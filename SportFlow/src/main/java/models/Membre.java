@@ -1,13 +1,15 @@
 package models;
 
-import java.util.Date;
-
 public class Membre extends Utilisateur {
-    public Date getDateDeNaissance() {
+    private java.sql.Date dateDeNaissance;
+    private String sportPratique;
+
+
+    public java.sql.Date getDateDeNaissance() {
         return dateDeNaissance;
     }
 
-    public void setDateDeNaissance(Date dateDeNaissance) {
+    public void setDateDeNaissance(java.sql.Date dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
     }
 
@@ -18,9 +20,4 @@ public class Membre extends Utilisateur {
     public void setSportPratique(String sportPratique) {
         this.sportPratique = sportPratique;
     }
-
-    private Date dateDeNaissance;
-    private String sportPratique;
-
-
 }

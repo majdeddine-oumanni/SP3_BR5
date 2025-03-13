@@ -1,12 +1,10 @@
 package DAO;
 
 import models.Membre;
+import models.Utilisateur;
 import refactor.Connector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,5 +22,33 @@ public class MembreDAO {
             membre.setNom(rs.getString("nom"));
         }
         return membres;
+    }
+
+    public static void ajouterMembre(Membre membre) throws SQLException {
+        String sql = "INSERT INTO membre(dateDeNaissance, sportPratique, nom) VALUES (?,?,?)";
+        Connection con = Connector.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDate(1, (Date) membre.getDateDeNaissance());
+        ps.setString(2, membre.getSportPratique());
+        ps.setString(3, membre.getNom());
+        ps.executeUpdate();
+    }
+
+    public static void modifierMembre(int id) throws SQLException {
+        String sql = "UPDATE membre SET dateDeNaissance=?, sportPratique=?,nom=? WHERE id=?";
+        Connection con = Connector.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        Membre membre = new Membre();
+        ps.setDate(1, (Date) membre.getDateDeNaissance());
+        ps.setString(2, membre.getSportPratique());
+        ps.setString(3, membre.getNom());
+        ps.executeUpdate();
+    }
+
+    public static void suprimerMembre(int id) throws SQLException {
+        String sql = "DELETE FROM membre WHERE id=?";
+        Connection con = Connector.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.executeUpdate();
     }
 }
