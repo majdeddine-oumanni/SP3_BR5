@@ -16,31 +16,50 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/UserServlet")
+@WebServlet("/")
 public class UserServlet extends HttpServlet {
     private final UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            List<Utilisateur> allUsers = utilisateurDAO.getUtilisateure();
-            List<Utilisateur> membres = new ArrayList<>();
-            List<Utilisateur> entraineurs = new ArrayList<>();
+        String action = req.getParameter("action");
+        if (action==null){
+            try {
+                List<Utilisateur> allUsers = utilisateurDAO.getUtilisateure();
+                List<Utilisateur> membres = new ArrayList<>();
+                List<Utilisateur> entraineurs = new ArrayList<>();
 
-            for (Utilisateur user : allUsers) {
-                if ("membre".equalsIgnoreCase(user.getType().toString())) {
-                    membres.add(user);
-                } else if ("entraineur".equalsIgnoreCase(user.getType().toString())) {
-                    entraineurs.add(user);
+                for (Utilisateur user : allUsers) {
+                    if ("membre".equalsIgnoreCase(user.getType().toString())) {
+                        membres.add(user);
+                    } else if ("entraineur".equalsIgnoreCase(user.getType().toString())) {
+                        entraineurs.add(user);
+                    }
                 }
-            }
 
-            req.setAttribute("membres", membres);
-            req.setAttribute("entraineurs", entraineurs);
-            req.getRequestDispatcher("utilisateursList.jsp").forward(req, resp);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                req.setAttribute("membres", membres);
+                req.setAttribute("entraineurs", entraineurs);
+                req.getRequestDispatcher("/utilisateur/utilisateursList.jsp").forward(req, resp);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
+            try {
+                suprimer(req,resp);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
+    }
+
+    protected void suprimer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        UtilisateurDAO.suprimerUtilisateure(id);
+        resp.sendRedirect("UserServlet");
     }
 
     @Override
@@ -55,6 +74,8 @@ public class UserServlet extends HttpServlet {
         try {
             utilisateurDAO.ajouterUtilisateur(utilisateur);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 

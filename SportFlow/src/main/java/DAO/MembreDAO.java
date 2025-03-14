@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MembreDAO {
-    public List<Membre> getAllMembre() throws SQLException {
+    public List<Membre> getAllMembre() throws SQLException, ClassNotFoundException {
         List<Membre> membres = new ArrayList<>();
         String sql = "SELECT * FROM membre";
         Connection con = Connector.getConnection();
@@ -24,7 +24,7 @@ public class MembreDAO {
         return membres;
     }
 
-    public static void ajouterMembre(Membre membre) throws SQLException {
+    public static void ajouterMembre(Membre membre) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO membre(dateDeNaissance, sportPratique, nom) VALUES (?,?,?)";
         Connection con = Connector.getConnection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class MembreDAO {
         ps.executeUpdate();
     }
 
-    public static void modifierMembre(int id) throws SQLException {
+    public static void modifierMembre(int id) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE membre SET dateDeNaissance=?, sportPratique=?,nom=? WHERE id=?";
         Connection con = Connector.getConnection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class MembreDAO {
         ps.executeUpdate();
     }
 
-    public static void suprimerMembre(int id) throws SQLException {
+    public static void suprimerMembre(int id) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM membre WHERE id=?";
         Connection con = Connector.getConnection();
         PreparedStatement ps = con.prepareStatement(sql);

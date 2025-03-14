@@ -34,7 +34,7 @@
 <body>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Ajouter un utilisateur</h2>
-    <form action="AjouterUtilisateurServlet" method="post">
+    <form action="UserServlet" method="post">
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" id="nom" name="nom" required>
@@ -42,8 +42,8 @@
         <div class="mb-3">
             <label for="role" class="form-label">Type d'utilisateur</label>
             <select class="form-select" id="role" name="type" required>
-                <option value="MEMBRE">Membre</option>
-                <option value="ENTRAINER">Entraîneur</option>
+                <option value="membre">Membre</option>
+                <option value="entraineur">Entraîneur</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary w-100">Ajouter</button>

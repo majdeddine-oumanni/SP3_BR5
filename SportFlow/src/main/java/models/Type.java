@@ -1,5 +1,5 @@
 package models;
 
 public enum Type {
-    MEMBRE, ENTRAINER;
+    membre, entraineur;
 }
