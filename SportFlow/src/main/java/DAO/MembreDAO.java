@@ -1,7 +1,6 @@
 package DAO;
 
 import models.Membre;
-import models.Utilisateur;
 import refactor.Connector;
 
 import java.sql.*;

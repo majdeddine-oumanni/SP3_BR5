@@ -34,7 +34,7 @@
 <body>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Ajouter un utilisateur</h2>
-    <form action="UserServlet" method="post">
+    <form action="UserServlet?action=add" method="post">
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" id="nom" name="nom" required>

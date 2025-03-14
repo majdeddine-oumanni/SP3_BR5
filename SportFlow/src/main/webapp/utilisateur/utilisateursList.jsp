@@ -65,9 +65,9 @@
                     <tr>
                         <td><%= membre.getId() %></td>
                         <td><%= membre.getNom() %></td>
-                        <td><button>Ajouter Membre</button></td>
+                        <td><button><a href="">Ajouter Membre</a></button></td>
                         <td><button type="button" class="btn btn-danger">
-                            <a href="UserServlet?action=suprimer&&id=<%=membre.getId()%>">Suprimer</a>
+                            <a href="UserServlet?action=delete&&id=<%=membre.getId()%>">Suprimer</a>
                         </button></td>
                     </tr>
                     <% } %>
@@ -94,9 +94,9 @@
                     <tr>
                         <td><%= entraineur.getId() %></td>
                         <td><%= entraineur.getNom() %></td>
-                        <td><button>Ajouter Entraîneur</button></td>
+                        <td><button><a href="EntraineurServlet?action=addToEntrainer&&id=<%=entraineur.getId()%>">Ajouter Entraîneur</a></button></td>
                         <td><button type="button" class="btn btn-danger">
-                            <a href="UserServlet?action=suprimer&&id=<%=entraineur.getId()%>">Suprimer</a>
+                            <a href="UserServlet?action=delete&&id=<%=entraineur.getId()%>">Suprimer</a>
                         </button></td>
                     </tr>
                     <% } %>
@@ -106,7 +106,7 @@
         </div>
     </div>
     <div class="text-center mt-4">
-        <a href="utilisateur/ajouter.jsp" class="btn btn-primary">Ajouter un utilisateur</a>
+        <a href="UserServlet?action=add" class="btn btn-primary">Ajouter un utilisateur</a>
     </div>
 </div>
 
