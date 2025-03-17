@@ -53,28 +53,22 @@
 <div class="container">
     <h2 class="text-white mb-4">bienvenue à Sport Flow</h2>
     <div class="d-flex justify-content-center gap-4">
-        <a href="adminLogin.html" class="text-decoration-none">
+        <a href="?action=session" class="text-decoration-none">
             <div class="card">
                 <i class="fas fa-user-shield icon"></i>
-                <h5>Admin</h5>
+                <h5>Session</h5>
             </div>
         </a>
-        <a href="memberLogin.html" class="text-decoration-none">
+        <a href="?action=membre" class="text-decoration-none">
             <div class="card">
                 <i class="fas fa-user icon"></i>
                 <h5>Member</h5>
             </div>
         </a>
-        <a href="trainerLogin.html" class="text-decoration-none">
+        <a href="?action=entraineur" class="text-decoration-none">
             <div class="card">
                 <i class="fas fa-dumbbell icon"></i>
-                <h5>Entrainer</h5>
-            </div>
-        </a>
-        <a href="addUser.html" class="text-decoration-none">
-            <div class="card">
-                <i class="fas fa-user-plus icon"></i>
-                <h5>Register</h5>
+                <h5>Entraineur</h5>
             </div>
         </a>
     </div>
