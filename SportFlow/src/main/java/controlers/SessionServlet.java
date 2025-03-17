@@ -83,7 +83,7 @@ public class SessionServlet extends HttpServlet {
     private void addSession(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException, IOException {
         Date date = Date.valueOf(request.getParameter("date"));
         String timeString = request.getParameter("time");
-        if (timeString.length() == 5) { 
+        if (timeString.length() == 5) {
             timeString += ":00";
         }
         Time time = Time.valueOf(timeString);
